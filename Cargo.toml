@@ -2,6 +2,9 @@
 name = "serde_merge"
 version = "0.1.0"
 edition = "2018"
+authors = ["Z4RX <iamz4rx@gmail.com>", "Dablus <Double125720@gmail.com>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Z4RX/serde_merge"
 
 [dependencies]
 anyhow = "1"
