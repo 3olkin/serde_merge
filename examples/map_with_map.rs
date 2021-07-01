@@ -10,6 +10,6 @@ fn main() {
     map2.insert("key4", "value4");
     map2.insert("key5", "value5");
     map2.insert("key6", "value6");
-    let result: serde_merge::Map = serde_merge::mmerge(map1, map2).unwrap();
+    let result = serde_merge::mmerge(map1, map2).unwrap();
     println!("{:#?}", result);
 }
