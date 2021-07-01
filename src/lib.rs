@@ -11,8 +11,8 @@ where
     L: Serialize + Deserialize<'a>,
     R: Serialize + Deserialize<'a>,
 {
-    let left_map = utils::struct_to_map(left)?;
-    let mut right_map = utils::struct_to_map(right)?;
+    let left_map = utils::to_map(&left)?;
+    let mut right_map = utils::to_map(&right)?;
 
     for key in left_map.keys() {
         if !right_map.contains_key(key) {
@@ -34,7 +34,7 @@ where
     T: Serialize + Deserialize<'a>,
 {
     let merged_map = merge_to_map(left, right)?;
-    Ok(utils::map_to_struct(merged_map)?)
+    Ok(utils::from_map(&merged_map)?)
 }
 
 #[cfg(test)]
