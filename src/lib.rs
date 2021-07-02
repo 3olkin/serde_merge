@@ -1,3 +1,7 @@
+//! # Serde Merge
+//!
+//! `serde_merge` is a set of methods on top of [serde](https://github.com/serde-rs/serde)
+//! for merging some serializable types.
 use serde::{de::Deserialize, Serialize};
 
 extern crate serde;
