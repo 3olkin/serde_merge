@@ -1,6 +1,6 @@
 [package]
 name = "serde_merge"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2018"
 authors = ["Z4RX <iamz4rx@gmail.com>", "Dablus <Double125720@gmail.com>"]
 license = "Apache-2.0"
@@ -13,6 +13,6 @@ readme = "README.md"
 keywords = ["serde", "merge", "magic", "sugar"]
 
 [dependencies]
-anyhow = "1"
 serde = "1.0"
 serde_json = "1.0"
+thiserror = "1.0"
