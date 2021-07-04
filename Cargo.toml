@@ -1,6 +1,6 @@
 [package]
 name = "serde_merge"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2018"
 authors = ["Z4RX <iamz4rx@gmail.com>", "Dablus <Double125720@gmail.com>"]
 license = "Apache-2.0"
@@ -10,7 +10,7 @@ Simple utility to merge some serializable data types.
 homepage = "https://github.com/Z4RX/serde_merge"
 repository = "https://github.com/Z4RX/serde_merge"
 readme = "README.md"
-keywords = ["serde", "merge", "magic"]
+keywords = ["serde", "merge", "magic", "sugar"]
 
 [dependencies]
 anyhow = "1"

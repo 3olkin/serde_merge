@@ -21,20 +21,11 @@ where
     L: Serialize + Deserialize<'a>,
     R: Serialize + Deserialize<'a>,
 {
-    let left_map = utils::to_map(&left)?;
-    let mut right_map = utils::to_map(&right)?;
+    let mut left_map = utils::to_map(&left)?;
+    let right_map = utils::to_map(&right)?;
+    left_map.extend(right_map);
 
-    for key in left_map.keys() {
-        if !right_map.contains_key(key) {
-            right_map.insert(
-                key.to_string(),
-                // unwrap is safe here because this key exists
-                left_map.get(key).unwrap().to_owned().take(),
-            );
-        };
-    }
-
-    Ok(right_map)
+    Ok(left_map)
 }
 
 /// Merge two types into given type `T`, returns `anyhow::Result<T>`. ( *Recommended* )
