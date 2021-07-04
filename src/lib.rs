@@ -2,7 +2,10 @@
 //!
 //! `serde_merge` is a set of methods on top of [serde](https://github.com/serde-rs/serde)
 //! for merging some serializable types.
-use serde::{de::Deserialize, Serialize};
+use serde::{
+    de::{Deserialize, DeserializeOwned},
+    Serialize,
+};
 
 extern crate serde;
 extern crate serde_json;
@@ -36,7 +39,7 @@ pub fn tmerge<'a, L, R, T>(left: L, right: R) -> anyhow::Result<T>
 where
     L: Serialize + Deserialize<'a>,
     R: Serialize + Deserialize<'a>,
-    T: Serialize + Deserialize<'a>,
+    T: Serialize + DeserializeOwned,
 {
     let merged_map = mmerge(left, right)?;
     Ok(utils::from_map(&merged_map)?)
