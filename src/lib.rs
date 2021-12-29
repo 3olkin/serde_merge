@@ -40,7 +40,7 @@ where
     T: Serialize + DeserializeOwned,
 {
     let merged_map = mmerge(left, right)?;
-    Ok(utils::from_map(&merged_map)?)
+    utils::from_map(&merged_map)
 }
 
 /// Merge two types into given type `T`, returns `serde_merge::Result<T>`. ( *Recommended* )
@@ -59,5 +59,5 @@ where
     right_map.retain(|_, v| !v.is_null());
     left_map.extend(right_map);
 
-    Ok(utils::from_map(&left_map)?)
+    utils::from_map(&left_map)
 }
