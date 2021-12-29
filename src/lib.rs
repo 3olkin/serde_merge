@@ -42,3 +42,22 @@ where
     let merged_map = mmerge(left, right)?;
     Ok(utils::from_map(&merged_map)?)
 }
+
+/// Merge two types into given type `T`, returns `serde_merge::Result<T>`. ( *Recommended* )
+///
+/// Works the same as `serde_merge::tmerge` except that `right`'s `Option::None` member
+/// will not overwrite the corresponding value in `left`.
+/// `T` has to implement `serde::Serialize` and `serde::de::DeserializeOwned`.
+pub fn omerge<L, R, T>(left: L, right: R) -> Result<T>
+where
+    L: Serialize,
+    R: Serialize,
+    T: Serialize + DeserializeOwned,
+{
+    let mut left_map = utils::to_map(&left)?;
+    let mut right_map = utils::to_map(&right)?;
+    right_map.retain(|_, v| !v.is_null());
+    left_map.extend(right_map);
+
+    Ok(utils::from_map(&left_map)?)
+}
