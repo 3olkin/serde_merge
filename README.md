@@ -104,3 +104,37 @@ fn main() {
 #### Note
 
 Merging structs require `derive` feature for `serde`.
+
+### Struct with optional fields
+
+```rust
+use serde::{Deserialize, Serialize};
+use serde_merge::omerge;
+
+#[derive(Serialize, Deserialize, PartialEq)]
+struct HasOptional {
+    field1: i32,
+    field2: Option<bool>,
+    field3: Option<String>,
+}
+
+pub fn main() {
+    let s1 = HasOptional {
+        field1: 1,
+        field2: None,
+        field3: Some("3".to_string()),
+    };
+    let s2 = HasOptional {
+        field1: 2,
+        field2: Some(true),
+        field3: None,
+    };
+    let result: HasOptional = omerge(s1, s2).unwrap();
+    let target = HasOptional {
+        field1: 2,
+        field2: Some(true),
+        field3: Some("3".to_string()),
+    };
+    assert_eq!(result, target); // true
+}
+```

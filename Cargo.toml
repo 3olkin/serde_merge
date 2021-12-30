@@ -1,7 +1,7 @@
 [package]
 name = "serde_merge"
-version = "0.1.2"
-edition = "2018"
+version = "0.1.3"
+edition = "2021"
 authors = ["Z4RX <iamz4rx@gmail.com>", "Dablus <Double125720@gmail.com>"]
 license = "Apache-2.0"
 description = """
@@ -16,3 +16,6 @@ keywords = ["serde", "merge", "magic", "sugar"]
 serde = "1.0"
 serde_json = "1.0"
 thiserror = "1.0"
+
+[dev-dependencies]
+serde = { version = "1.0", features = ["derive"] }
